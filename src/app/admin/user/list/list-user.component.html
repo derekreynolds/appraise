@@ -1,0 +1,30 @@
+<main-panel title="Users">
+	<div class="table-responsive">
+		<table class="table table-striped">
+		 	<thead>
+		 		<tr>
+		 			<td i18n>Email</td>
+		 			<td i18n>First Name</td>
+		 			<td i18n>Last Name</td>
+		 			<td i18n>Role</td>
+		 		</tr>
+		 	</thead>
+		 	<tbody>
+		 		<tr class="row-item-selector" *ngFor="let user of users | async" [routerLink]="['/users', user.$key]">
+		 			<td>{{user.email}}</td>
+		 			<td>{{user.firstName}}</td>
+		 			<td>{{user.lastName}}</td>
+		 			<td>{{user.role}}</td>
+		 		</tr>
+		 	</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-1">
+			<a [routerLink]="['/admin']" class="btn btn-outline-secondary" i18n>Cancel</a>
+		</div>	
+		<div class="col-1">
+			<a [routerLink]="['/users/create']" class="btn btn-outline-primary" i18n>Create</a>
+		</div>
+	</div>	
+</main-panel>

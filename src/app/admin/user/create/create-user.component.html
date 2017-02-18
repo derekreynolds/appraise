@@ -1,0 +1,66 @@
+<main-panel title="Users">
+
+	<form [formGroup]="form" (ngSubmit)="create()">
+
+		<div class="form-group" [ngClass]="{'has-danger':!form.controls['email'].valid && form.controls['email'].touched}">		
+	    	<label for="email" i18n>Email address</label>
+	    	<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email"> 
+	    	<div *ngIf="form.controls['email'].touched">	    		
+	    		<div *ngIf="form.controls['email'].hasError('required')" class="alert alert-danger" i18n>You must include an email.</div>
+	    		<div *ngIf="form.controls['email'].hasError('userExists')" class="alert alert-danger" i18n>User already exists.</div>	    		
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group" [ngClass]="{'has-danger':!form.controls['firstName'].valid && form.controls['firstName'].touched}">
+	    	<label for="firstName" i18n>First Name</label>
+	    	<input type="text" class="form-control" id="firstName" placeholder="Enter first name." formControlName="firstName" >
+	    	<div *ngIf="form.controls['firstName'].touched">	    		
+	    		<div *ngIf="form.controls['firstName'].hasError('required')" class="alert alert-danger" i18n>You must include a first name.</div>	    		
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group" [ngClass]="{'has-danger':!form.controls['lastName'].valid && form.controls['lastName'].touched}">
+	    	<label for="lastName" i18n>Last Name</label>
+	    	<input type="text" class="form-control" id="lastName" placeholder="Enter last name." formControlName="lastName" >
+	    	<div *ngIf="form.controls['lastName'].touched">	    		
+	    		<div *ngIf="form.controls['lastName'].hasError('required')" class="alert alert-danger" i18n>You must include a last name.</div>	    		
+	    	</div>
+	  	</div>
+
+		<div class="form-group" [ngClass]="{'has-danger':!form.controls['role'].valid && form.controls['role'].touched}">
+	    	<label for="role" i18n>Role</label>
+		  	<ng-select [options]="roles" formControlName="role">
+			</ng-select>
+		</div>
+
+	  	<div class="form-group" [ngClass]="{'has-danger':!form.controls['password'].valid && form.controls['password'].touched}">
+	    	<label for="password" i18n>Password</label>
+	    	<input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" >
+	    	<div *ngIf="form.controls['password'].touched">
+	    		<div *ngIf="form.controls['password'].hasError('digitCharacterRule')" class="alert alert-danger" i18n>Must contain at least one numeric.</div>
+	    		<div *ngIf="form.controls['password'].hasError('alphabeticalCharacterRule')" class="alert alert-danger" i18n>Must contain at least one alphabetical character.</div>
+	    		<div *ngIf="form.controls['password'].hasError('uppercaseCharacterRule')" class="alert alert-danger" i18n>Must contain at least one uppercase character.</div>
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group" [ngClass]="{'has-danger':!form.controls['confirmPassword'].valid && form.controls['confirmPassword'].touched}">
+	    	<label for="confirmPassword" i18n>Confirm Password</label>
+	    	<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword" >
+	    	<div *ngIf="form.controls['confirmPassword'].touched">
+	    		<div *ngIf="form.controls['confirmPassword'].hasError('mismatchedPasswords')" class="alert alert-danger" i18n>Passwords must match.</div>
+	    	</div>	    	
+	  	</div>
+
+	  	<div class="row">
+	  		<div class="col-1">
+				<a [routerLink]="['/users']" class="btn btn-outline-secondary" i18n>Cancel</a>
+			</div>
+			<div class="col-1">	
+				<button type="submit" class="btn btn-outline-primary" [disabled]="form.invalid" i18n>Create</button>
+			</div>
+
+	  	</div>	  	
+
+	</form>
+
+</main-panel>

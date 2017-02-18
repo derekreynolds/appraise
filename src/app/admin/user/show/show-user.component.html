@@ -1,0 +1,50 @@
+<main-panel title="Users">
+	<div class="row">
+		<div class="col-3 show-entity-label" i18n>Email</div>
+		<div class="col-9">{{ user?.email}}</div>
+	</div>
+	<div class="row">
+		<div class="col-3 show-entity-label" i18n>First Name</div>
+		<div class="col-9">{{ user?.firstName}}</div>
+	</div>
+	<div class="row">
+		<div class="col-3 show-entity-label" i18n>Last Name</div>
+		<div class="col-9">{{ user?.lastName}}</div>
+	</div>
+	<div class="row">
+		<div class="col-3 show-entity-label" i18n>Role</div>
+		<div class="col-9">{{ user?.role}}</div>
+	</div>
+	<div class="row">
+		<div class="col-1">
+			<button type="button" [routerLink]="['/users']" class="btn btn-outline-secondary" i18n>Cancel</button>
+		</div>
+		<div class="col-1">
+			<button type="button" (click)="onClickEdit()" class="btn btn-outline-primary" i18n>Edit</button>
+		</div>
+		<div class="col-1">
+			<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#entityDeleteModal" i18n>Delete</button>
+		</div>
+	</div>
+
+	<div class="modal fade" id="entityDeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteEntityModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="deleteEntityModalLabel">Delete</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	Click confirm to delete entity.
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" i18n>Cancel</button>
+	        <button type="button" class="btn btn-outline-primary" data-dismiss="modal" (click)="onClickDelete()" i18n>Confirm</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+</main-panel>
